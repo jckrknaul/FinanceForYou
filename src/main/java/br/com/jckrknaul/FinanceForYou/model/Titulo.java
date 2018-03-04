@@ -1,6 +1,9 @@
 package br.com.jckrknaul.FinanceForYou.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,12 +14,21 @@ public class Titulo extends AbstractEntity{
     @JoinColumn(name = "entidadeId")
     private Entidade entidade;
 
+    @NotNull
+    private String descricao;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataEmissao;
+    @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataValidade;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
 
+    @NotNull
     private BigDecimal valor;
     private BigDecimal valorPago;
+    @NotNull
     private BigDecimal valorOriginal;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -35,6 +47,14 @@ public class Titulo extends AbstractEntity{
 
     public void setEntidade(Entidade entidade) {
         this.entidade = entidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Date getDataEmissao() {
@@ -107,5 +127,22 @@ public class Titulo extends AbstractEntity{
 
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Titulo{" +
+                "entidade=" + entidade +
+                ", descricao='" + descricao + '\'' +
+                ", dataEmissao=" + dataEmissao +
+                ", dataValidade=" + dataValidade +
+                ", dataPagamento=" + dataPagamento +
+                ", valor=" + valor +
+                ", valorPago=" + valorPago +
+                ", valorOriginal=" + valorOriginal +
+                ", tipoPagamento=" + tipoPagamento +
+                ", tipo=" + tipo +
+                ", situacao=" + situacao +
+                '}';
     }
 }
