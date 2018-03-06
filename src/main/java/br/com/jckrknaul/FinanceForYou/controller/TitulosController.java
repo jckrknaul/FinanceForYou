@@ -9,15 +9,18 @@ import br.com.jckrknaul.FinanceForYou.service.TituloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.jws.WebParam;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("titulos")
+@RequestMapping("/titulos")
 public class TitulosController {
 
     private final String PAGE_INDEX = "titulo/CadastroTitulo";
@@ -52,4 +55,19 @@ public class TitulosController {
         redirectAttributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
         return new ModelAndView("redirect:/titulos/novo");
     }
+
+    @GetMapping
+    public ModelAndView pesquisar(Titulo titulo){
+        ModelAndView mv = new ModelAndView("titulo/PesquisarTitulo");
+        mv.addObject("listaDeEntidades", entidadeService.listarTodos());
+        mv.addObject("titulos", titulosService.retornarFiltrados(titulo.getDescricao(), titulo.getEntidade()));
+        return mv;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public String excluir(@PathVariable("id") Long ID){
+        titulosService.excluir(ID);
+        return "redirect:/titulos";
+    }
+
 }

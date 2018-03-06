@@ -17,4 +17,8 @@ public class TipoPagamentoService {
         return tipoPagtoRepository.findAll();
     }
 
+    public void excluir(Long ID){
+        tipoPagtoRepository.delete(ID);
+    }
+
 }

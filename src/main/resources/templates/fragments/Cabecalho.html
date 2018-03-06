@@ -5,19 +5,31 @@
 <nav class="blue lighten-2" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
+            <!--
             <li><a th:href="@{/entidades}">Entidades</a></li>
             <li><a th:href="@{/titulos}">Títulos</a></li>
+            <li><a th:href="@{/tiposPagto}">Tipos Pagamento</a></li>
+            -->
+
             <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
             <ul id="dropdown2" class="dropdown-content">
                 <li><a th:href="@{/entidades/novo}">Entidade</a></li>
                 <li><a th:href="@{/titulos/novo}">Título</a></li>
+                <li><a th:href="@{/tiposPagto/novo}">Tipos Pagamento</a></li>
             </ul>
 
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown3">Consultas<i class="material-icons right">arrow_drop_down</i></a></li>
+            <ul id="dropdown3" class="dropdown-content">
+                <li><a th:href="@{/entidades}">Entidade</a></li>
+                <li><a th:href="@{/titulos}">Título</a></li>
+                <li><a th:href="@{/tiposPagto}">Tipos Pagamento</a></li>
+            </ul>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
             <li><a th:href="@{/entidades}">Entidades</a></li>
-            <li><a th:href="@{/entidades}">Títulos</a></li>
+            <li><a th:href="@{/titulos}">Títulos</a></li>
+            <li><a th:href="@{/tiposPagto}">Tipos Pagamento</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -27,6 +39,7 @@
 <ul id="dropdown1" class="dropdown-content">
     <li><a th:href="@{/entidades/novo}">Entidade</a></li>
     <li><a th:href="@{/titulos/novo}">Título</a></li>
+    <li><a th:href="@{/tipoPagto/novo}">Tipo Pagamento</a></li>
 </ul>
 
 

@@ -31,9 +31,9 @@ public class Titulo extends AbstractEntity{
     @NotNull
     private BigDecimal valorOriginal;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipo_pagamento_id")
-    private TipoPagamento tipoPagamento;
+    private TipoPagamento tipoDePagamento;
 
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
@@ -106,11 +106,11 @@ public class Titulo extends AbstractEntity{
     }
 
     public TipoPagamento getTipoPagamento() {
-        return tipoPagamento;
+        return tipoDePagamento;
     }
 
     public void setTipoPagamento(TipoPagamento tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+        this.tipoDePagamento = tipoPagamento;
     }
 
     public Tipo getTipo() {
@@ -140,7 +140,7 @@ public class Titulo extends AbstractEntity{
                 ", valor=" + valor +
                 ", valorPago=" + valorPago +
                 ", valorOriginal=" + valorOriginal +
-                ", tipoPagamento=" + tipoPagamento +
+                ", tipoPagamento=" + tipoDePagamento +
                 ", tipo=" + tipo +
                 ", situacao=" + situacao +
                 '}';
