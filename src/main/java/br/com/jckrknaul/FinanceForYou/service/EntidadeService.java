@@ -1,5 +1,6 @@
 package br.com.jckrknaul.FinanceForYou.service;
 
+import br.com.jckrknaul.FinanceForYou.dto.EntidadeDTO;
 import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.repository.EntidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,9 @@ public class EntidadeService {
 
     public void excluir(Long ID){
         entidadeRepository.delete(ID);
+    }
+
+    public List<EntidadeDTO> pesquisarDTO(String nome){
+        return entidadeRepository.filtradasDTO(nome);
     }
 }

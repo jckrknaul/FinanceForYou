@@ -1,5 +1,6 @@
 package br.com.jckrknaul.FinanceForYou.controller;
 
+import br.com.jckrknaul.FinanceForYou.dto.EntidadeDTO;
 import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.service.EntidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -65,6 +67,11 @@ public class EntidadesController {
     public String deletar(@PathVariable("id") Long ID){
         entidadeService.excluir(ID);
         return "redirect:/entidades";
+    }
+
+    @RequestMapping("/filtro")
+    public @ResponseBody List<EntidadeDTO> filtradas(String nome){
+        return entidadeService.pesquisarDTO(nome);
     }
 
 }

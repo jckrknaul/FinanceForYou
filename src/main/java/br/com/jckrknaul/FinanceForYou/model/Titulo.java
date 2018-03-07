@@ -1,6 +1,7 @@
 package br.com.jckrknaul.FinanceForYou.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,10 +26,13 @@ public class Titulo extends AbstractEntity{
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
 
+    @NumberFormat(pattern = "#,##0.00")
     @NotNull
     private BigDecimal valor;
+    @NumberFormat(pattern = "#,##0.00")
     private BigDecimal valorPago;
     @NotNull
+    @NumberFormat(pattern = "#,##0.00")
     private BigDecimal valorOriginal;
 
     @ManyToOne(fetch = FetchType.LAZY)

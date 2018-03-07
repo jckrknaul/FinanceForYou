@@ -1,5 +1,7 @@
 package br.com.jckrknaul.FinanceForYou.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 @Entity
 public class TipoPagamento extends AbstractEntity {
 
+    @NotEmpty(message = "Descrição deve ser informada!")
     @Column(length = 60)
     private String descricao;
 

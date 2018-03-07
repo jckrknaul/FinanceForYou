@@ -1,10 +1,12 @@
 package br.com.jckrknaul.FinanceForYou.service;
 
 import br.com.jckrknaul.FinanceForYou.model.TipoPagamento;
+import br.com.jckrknaul.FinanceForYou.model.Titulo;
 import br.com.jckrknaul.FinanceForYou.repository.TipoPagtoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,6 +21,10 @@ public class TipoPagamentoService {
 
     public void excluir(Long ID){
         tipoPagtoRepository.delete(ID);
+    }
+
+    public TipoPagamento salvar(TipoPagamento tipoPagamento){
+        return tipoPagtoRepository.save(tipoPagamento);
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface TituloRepositoty extends JpaRepository<Titulo, Long> {
 
-    @Query("select t from Titulo t where t.descricao like %?1% and (t.entidade = ?2 or ?2 is null)")
+    @Query("select t from Titulo t join fetch t.tipoDePagamento where t.descricao like %?1% and (t.entidade = ?2 or ?2 is null)")
     List<Titulo> filtrados(String descricao, Entidade entidade);
 
 }

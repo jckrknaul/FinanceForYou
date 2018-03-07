@@ -29,6 +29,23 @@ $(document).ready(function () {
     $('input#input_text, textarea#textarea').characterCounter();
 });
 
+// Formatador para moedas
+$(function () {
+    $('.js-moeda').maskMoney({
+        decimal : ',',
+        thousands : '.',
+        allowZero : true
+    });
+});
+
+// Formatador para numeros
+$(function () {
+    $('.js-numero').maskMoney({
+        thousands : '.',
+        allowZero : true
+    });
+});
+
 $(document).ready(function(){
     $('.collapsible').collapsible();
 });
