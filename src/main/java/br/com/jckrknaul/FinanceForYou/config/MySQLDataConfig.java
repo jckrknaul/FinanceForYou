@@ -10,8 +10,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
 
-//@Configuration
-//@Profile("dev")
+@Configuration
+@Profile("dev")
 public class MySQLDataConfig {
 
     @Bean
