@@ -6,7 +6,7 @@
 	<groupId>br.com.jckrknaul</groupId>
 	<artifactId>FinanceForYou</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>FinanceForYou</name>
 	<description>Demo project for Spring Boot</description>
