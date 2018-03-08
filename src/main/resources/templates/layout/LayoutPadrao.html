@@ -16,11 +16,21 @@
 
 <body>
 
+<!--
     <header layout:include="/fragments/Cabecalho"></header>
 
     <section layout:fragment="conteudo"></section>
 
     <div layout:include="/fragments/Footer"></div>
+
+-->
+    <header th:replace="/fragments/Cabecalho :: Cabecalho"></header>
+
+    <section layout:fragment="conteudo"> </section>
+
+    <div th:replace="/fragments/Footer :: Footer"> </div>
+
+
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
