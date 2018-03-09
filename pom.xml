@@ -6,7 +6,7 @@
 	<groupId>br.com.jckrknaul</groupId>
 	<artifactId>FinanceForYou</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>FinanceForYou</name>
 	<description>Demo project for Spring Boot</description>
@@ -23,7 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<!-- Thymeleaf -->
-		<thymeleaf.version>3.0.1.RELEASE</thymeleaf.version>
+		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 
 		<!-- Thymeleaf - Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.0.1</thymeleaf-layout-dialect.version>
