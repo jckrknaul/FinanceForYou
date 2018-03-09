@@ -19,11 +19,15 @@
 <!--
     <header layout:include="/fragments/Cabecalho"></header>
 
-    <section layout:fragment="conteudo"></section>
+    <section layout:fragment="conteudo">
 
-    <div layout:include="/fragments/Footer"></div>
+    </section>
 
+    <div layout:include="/fragments/Footer">
+
+    </div>
 -->
+
     <header th:replace="/fragments/Cabecalho :: Cabecalho"></header>
 
     <section layout:fragment="conteudo"> </section>

@@ -24,9 +24,9 @@
 
                             <div class="row">
                                 <form method="post" th:action="@{/titulos/novo}" th:object="${titulo}" class="col s12">
+                                    <input type="hidden" name="id" th:value="*{id}">
 
                                     <div class="row">
-
                                         <div class="input-field s12 col m6">
                                             <i class="material-icons prefix">textsms</i>
                                             <input type="text" id="autocomplete-input-entidade"

@@ -42,7 +42,7 @@ public class Entidade extends AbstractEntity{
     @Column(length = 100, name = "e_mail")
     private String email;
 
-    @OneToMany(mappedBy = "entidade", orphanRemoval = true)
+    @OneToMany(mappedBy = "entidade")
     private List<Titulo> titulos = new ArrayList<>();
 
     public Entidade(String nome, String cpfOuCnpj, String endereco, String cidade, String bairro, String estado, String telefone, String email, List<Titulo> titulos) {

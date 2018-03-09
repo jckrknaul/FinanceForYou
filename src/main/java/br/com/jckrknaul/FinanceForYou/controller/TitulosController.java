@@ -65,15 +65,15 @@ public class TitulosController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public String excluir(@PathVariable("id") Long ID){
+    public String excluir(@PathVariable("id") Long ID, RedirectAttributes attributes){
         titulosService.excluir(ID);
+        attributes.addFlashAttribute("mensagem", "Título excluido com sucesso!");
         return "redirect:/titulos";
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody
-    ResponseEntity<?> novoTipoDePagamento(@RequestBody @Valid TipoPagamento tipoPagamento,
-                                          BindingResult result){
+    public @ResponseBody ResponseEntity<?> novoTipoDePagamento(@RequestBody @Valid TipoPagamento tipoPagamento,
+                                                                 BindingResult result){
 
         if (result.hasErrors()){
             return ResponseEntity.badRequest().body(result.getFieldError("descricao").getDefaultMessage());
@@ -82,5 +82,17 @@ public class TitulosController {
         tipoPagamento = tipoPagamentoService.salvar(tipoPagamento);
         return ResponseEntity.ok(tipoPagamento);
     }
+
+    @GetMapping("/{id}")
+    public ModelAndView editar(@PathVariable("id") Titulo titulo){
+        ModelAndView mv = new ModelAndView(PAGE_INDEX);
+        mv.addObject("listaDeEntidades", entidadeService.listarTodos());
+        mv.addObject("todosOsTipos", Tipo.values());
+        mv.addObject("todasAsSituacoes", Situacao.values());
+        mv.addObject("tipoPagamento", tipoPagamentoService.listarTodos());
+        mv.addObject(titulo);
+        return mv;
+    }
+
 
 }

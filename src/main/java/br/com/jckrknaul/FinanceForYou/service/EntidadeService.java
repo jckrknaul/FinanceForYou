@@ -1,9 +1,11 @@
 package br.com.jckrknaul.FinanceForYou.service;
 
 import br.com.jckrknaul.FinanceForYou.dto.EntidadeDTO;
+import br.com.jckrknaul.FinanceForYou.exception.NegocioException;
 import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.repository.EntidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +39,13 @@ public class EntidadeService {
     }
 
     public void excluir(Long ID){
-        entidadeRepository.delete(ID);
+        try{
+            entidadeRepository.delete(ID);
+        }catch (DataIntegrityViolationException e){
+            throw new NegocioException("Erro ao excuir a mensagem. "+
+                    "Necessário primeiramente excluir os títulos vinculados! ");
+        }
+
     }
 
     public List<EntidadeDTO> pesquisarDTO(String nome){

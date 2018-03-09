@@ -1,6 +1,7 @@
 package br.com.jckrknaul.FinanceForYou.controller;
 
 import br.com.jckrknaul.FinanceForYou.dto.EntidadeDTO;
+import br.com.jckrknaul.FinanceForYou.exception.NegocioException;
 import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.service.EntidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +65,16 @@ public class EntidadesController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public String deletar(@PathVariable("id") Long ID){
-        entidadeService.excluir(ID);
+    public String deletar(@PathVariable("id") Long ID, RedirectAttributes attributes){
+
+        try{
+            entidadeService.excluir(ID);
+        }catch (NegocioException e){
+            attributes.addFlashAttribute("mensagemErro", e.getMessage());
+            return "redirect:/entidades";
+        }
+
+        attributes.addFlashAttribute("mensagem", "Entidade excluída com sucesso!");
         return "redirect:/entidades";
     }
 
