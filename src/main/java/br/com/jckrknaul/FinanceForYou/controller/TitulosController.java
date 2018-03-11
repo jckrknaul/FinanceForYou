@@ -1,13 +1,13 @@
 package br.com.jckrknaul.FinanceForYou.controller;
 
-import br.com.jckrknaul.FinanceForYou.model.Situacao;
-import br.com.jckrknaul.FinanceForYou.model.Tipo;
-import br.com.jckrknaul.FinanceForYou.model.TipoPagamento;
-import br.com.jckrknaul.FinanceForYou.model.Titulo;
+import br.com.jckrknaul.FinanceForYou.controller.page.PageWrapper;
+import br.com.jckrknaul.FinanceForYou.model.*;
 import br.com.jckrknaul.FinanceForYou.service.EntidadeService;
 import br.com.jckrknaul.FinanceForYou.service.TipoPagamentoService;
 import br.com.jckrknaul.FinanceForYou.service.TituloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jws.WebParam;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -57,10 +58,16 @@ public class TitulosController {
     }
 
     @GetMapping
-    public ModelAndView pesquisar(Titulo titulo){
+    public ModelAndView pesquisar(Titulo titulo, @PageableDefault(size = 6) Pageable pageable,
+                                  HttpServletRequest httpServletRequest){
         ModelAndView mv = new ModelAndView("titulo/PesquisarTitulo");
+        PageWrapper<Titulo> paginaWrapper =
+                new PageWrapper<>(titulosService.porNome(titulo.getDescricao(), pageable), httpServletRequest);
+
+
+        mv.addObject("pagina", paginaWrapper);
         mv.addObject("listaDeEntidades", entidadeService.listarTodos());
-        mv.addObject("titulos", titulosService.retornarFiltrados(titulo.getDescricao(), titulo.getEntidade()));
+        //mv.addObject("titulos", titulosService.retornarFiltrados(titulo.getDescricao(), titulo.getEntidade()));
         return mv;
     }
 

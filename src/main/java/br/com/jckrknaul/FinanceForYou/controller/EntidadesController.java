@@ -1,10 +1,13 @@
 package br.com.jckrknaul.FinanceForYou.controller;
 
+import br.com.jckrknaul.FinanceForYou.controller.page.PageWrapper;
 import br.com.jckrknaul.FinanceForYou.dto.EntidadeDTO;
 import br.com.jckrknaul.FinanceForYou.exception.NegocioException;
 import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.service.EntidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -49,10 +53,14 @@ public class EntidadesController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView pesquisar(Entidade entidade){
-        List<Entidade> entidades = entidadeService.pesquisarPorNome(entidade.getNome());
-        ModelAndView mv = new ModelAndView(PAGE_PESQUISAR);
-        mv.addObject("entidades", entidades);
+    public ModelAndView pesquisar(Entidade entidade, @PageableDefault(size = 6) Pageable pageable,
+                                  HttpServletRequest httpServletRequest) {
+
+        ModelAndView mv = new ModelAndView("entidade/PesquisarEntidade");
+        PageWrapper<Entidade> paginaWrapper =
+                new PageWrapper<>(entidadeService.porNome(entidade.getNome(), pageable), httpServletRequest);
+
+        mv.addObject("pagina", paginaWrapper);
         return mv;
     }
 

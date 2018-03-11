@@ -6,6 +6,8 @@ import br.com.jckrknaul.FinanceForYou.model.Entidade;
 import br.com.jckrknaul.FinanceForYou.repository.EntidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,4 +53,10 @@ public class EntidadeService {
     public List<EntidadeDTO> pesquisarDTO(String nome){
         return entidadeRepository.filtradasDTO(nome);
     }
+
+    public Page<Entidade> porNome(String nome, Pageable pageable){
+        return entidadeRepository.porNome(nome, pageable);
+    }
+
+
 }

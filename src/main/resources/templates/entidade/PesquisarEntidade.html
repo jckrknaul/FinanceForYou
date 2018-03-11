@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/LayoutPadrao}">
+      <!-- layout:decorate="~{layout/LayoutPadrao}">-->
 
 <head>
     <title>Pesquisa de Entidade</title>
@@ -51,7 +52,7 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr th:each="entidade : ${entidades}">
+                                    <tr th:each="entidade : ${pagina.conteudo}">
                                         <td th:text="${entidade.id}"> 1 </td>
                                         <td th:text="${entidade.nome}"> José </td>
                                         <td th:text="${entidade.cpfOuCnpj}">  </td>
@@ -78,8 +79,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                       <!-- <td colspan="9" th:if="${#list.isEmpty(entidades)}" >Nenhuma entidade encontrada!</td>
-                                       -->
+                                        <td colspan="9" th:if="${pagina.vazia}">Nenhuma entidade encontrada!</td>
                                     </tr>
 
                                     </tbody>
@@ -88,6 +88,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <div th:replace="/fragments/Paginacao :: Pagination (${pagina})"></div>
+
                 </div>
             </div>
         </div>

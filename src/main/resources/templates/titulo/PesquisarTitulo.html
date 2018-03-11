@@ -78,7 +78,7 @@
                                 </thead>
                                 <tbody>
 
-                                <tr th:each="titulo : ${titulos}">
+                                <tr th:each="titulo : ${pagina.conteudo}">
                                     <td th:text="${titulo.id}">1</td>
                                     <td th:text="${titulo.entidade.nome}">Lucas</td>
                                     <td th:text="${titulo.descricao}">Lucas</td>
@@ -106,13 +106,15 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="9" th:if="${#lists.isEmpty(titulos)}">Nenhuma título encontrada!</td>
+                                    <td colspan="9" th:if="${pagina.vazia}">Nenhum título encontrad!</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+
+                <div th:replace="/fragments/Paginacao :: Pagination (${pagina})"></div>
             </div>
         </div>
     </div>

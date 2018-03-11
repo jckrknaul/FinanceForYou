@@ -5,6 +5,8 @@ import br.com.jckrknaul.FinanceForYou.model.Titulo;
 import br.com.jckrknaul.FinanceForYou.repository.EntidadeRepository;
 import br.com.jckrknaul.FinanceForYou.repository.TituloRepositoty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -36,5 +38,7 @@ public class TituloService {
         tituloRepositoty.delete(ID);
     }
 
-
+    public Page<Titulo> porNome(String descricao, Pageable pageable){
+        return tituloRepositoty.porNome(descricao, pageable);
+    }
 }
