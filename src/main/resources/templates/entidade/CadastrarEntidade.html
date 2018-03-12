@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="/layout/LayoutPadrao">
+      layout:decorator="~{layout/LayoutPadrao}">
 
 <head>
     <title th:text="${id == null ? 'Cadastro de entidade' : 'Edição de entidade'}">Título</title>
@@ -12,8 +12,8 @@
     <div class="container">
         <div class="section">
 
-            <div th:include="/fragments/MensagemInfo"></div>
-            <div th:include="/fragments/MensagemErro"></div>
+            <div th:include="~{fragments/MensagemInfo}"></div>
+            <div th:include="~{fragments/MensagemErro}"></div>
 
             <div class="row">
                 <div class="col s12 m12">
