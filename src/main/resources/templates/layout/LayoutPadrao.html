@@ -6,43 +6,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Starter Template - Materialize</title>
+    <title>Começanco com Spring Boot</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link th:href="@{/vendor/css/materialize.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link th:href="@{/vendor/css/style.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body>
 
-<!--
-    <header layout:include="/fragments/Cabecalho"></header>
+<header th:replace="/fragments/Cabecalho :: Cabecalho"></header>
 
-    <section layout:fragment="conteudo">
+<!-- Conteudo dinamico -->
+<section layout:fragment="conteudo">
 
-    </section>
+</section>
 
-    <div layout:include="/fragments/Footer">
+<div th:replace="/fragments/Footer :: Footer">
 
-    </div>
--->
+</div>
 
-    <header th:replace="/fragments/Cabecalho :: Cabecalho"></header>
-
-    <section layout:fragment="conteudo"> </section>
-
-
-    <div th:replace="/fragments/Footer :: Footer"> </div>
-
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script th:src="@{/vendor/js/materialize.js}"></script>
-    <script th:src="@{/vendor/js/jquery.maskMoney.js}"></script>
-    <script th:src="@{/vendor/js/init.js}"></script>
-    <th:block layout:fragment="javascript-extra"/>
-
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script th:src="@{/vendor/js/materialize.js}"></script>
+<script th:src="@{/vendor/js/init.js}"></script>
+<script th:src="@{/vendor/js/jquery.maskMoney.js}"></script>
+<th:block layout:fragment="javascript-extra"/>
 </body>
-
 </html>
