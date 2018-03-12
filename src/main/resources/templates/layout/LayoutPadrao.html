@@ -15,14 +15,15 @@
 </head>
 <body>
 
-<header th:replace="/fragments/Cabecalho :: Cabecalho"></header>
+<!--<header th:replace="/fragments/Cabecalho :: Cabecalho"></header>  -->
+<header th:replace="~{fragments/Cabecalho :: Cabecalho}"></header>
 
 <!-- Conteudo dinamico -->
 <section layout:fragment="conteudo">
 
 </section>
 
-<div th:replace="/fragments/Footer :: Footer">
+<div th:replace="~{fragments/Footer :: Footer}">
 
 </div>
 
