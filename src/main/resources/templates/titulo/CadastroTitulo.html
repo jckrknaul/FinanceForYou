@@ -13,8 +13,8 @@
 
     <div class="container">
         <div class="section">
-            <div th:include="/fragments/MensagemInfo"></div>
-            <div th:include="/fragments/MensagemErro"></div>
+            <div th:include="~{fragments/MensagemInfo}"></div>
+            <div th:include="~{fragments/MensagemErro}"></div>
 
             <h4 th:text="${id == null ? 'Cadastro de título' : 'Edição de título'}">Cadastro de Título</h4>
 
