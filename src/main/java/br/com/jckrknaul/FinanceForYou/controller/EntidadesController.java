@@ -91,4 +91,9 @@ public class EntidadesController {
         return entidadeService.pesquisarDTO(nome);
     }
 
+    @RequestMapping("/listarREST")
+    public @ResponseBody List<EntidadeDTO> listarREST(){
+        return  entidadeService.listarTodosDTO();
+    }
+
 }

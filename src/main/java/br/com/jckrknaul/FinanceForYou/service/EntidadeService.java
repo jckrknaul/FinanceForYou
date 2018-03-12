@@ -54,6 +54,10 @@ public class EntidadeService {
         return entidadeRepository.filtradasDTO(nome);
     }
 
+    public List<EntidadeDTO> listarTodosDTO(){
+        return entidadeRepository.listarTodosDTO();
+    }
+
     public Page<Entidade> porNome(String nome, Pageable pageable){
         return entidadeRepository.porNome(nome, pageable);
     }
